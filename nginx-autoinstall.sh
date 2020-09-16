@@ -330,13 +330,6 @@ case $OPTION in
 	cd /usr/local/src/nginx/nginx-${NGINX_VER} || exit 1
 
 	NGINX_OPTIONS="
-		--prefix=/etc/nginx \
-		--sbin-path=/usr/sbin/nginx \
-		--conf-path=/etc/nginx/nginx.conf \
-		--error-log-path=/var/log/nginx/error.log \
-		--http-log-path=/var/log/nginx/access.log \
-		--pid-path=/var/run/nginx.pid \
-		--lock-path=/var/run/nginx.lock \
 		--http-client-body-temp-path=/var/cache/nginx/client_temp \
 		--http-proxy-temp-path=/var/cache/nginx/proxy_temp \
 		--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \
@@ -354,7 +347,13 @@ case $OPTION in
 		--with-http_slice_module \
 		--with-http_stub_status_module \
 		--with-http_realip_module \
-		--with-http_sub_module"
+		--with-stream \
+		-- with-http_secure_link_module \
+		-- with-http_xslt_module \
+		-- with-http_v2_module \
+		
+		--with-http_sub_module" \
+
 
 	# Optional options
 	if [[ $LUA == 'y' ]]; then
